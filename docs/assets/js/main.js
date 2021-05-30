@@ -91,7 +91,7 @@ const loadJSON = (path) => {
 
 // 再生する動画を変更
 const changeVideoById = (videoId) => {
-    player.cueVideoById({videoId: videoId});
+    player.cueVideoById({videoId: videoId, startSeconds: 0});
 };
 
 // チャート上で示されている再生位置を変更
@@ -135,10 +135,12 @@ window.onYouTubeIframeAPIReady = () => {
     player = new YT.Player("ytplayer", {
         height: "450",
         width: "800",
-        playerVars: {"playsinline": 1},
         events: {
             "onReady": onPlayerReady,
             "onStateChange": onPlayerStateChange
+        },
+        playerVars: {
+            playsinline: 1,
         }
     });
 };
