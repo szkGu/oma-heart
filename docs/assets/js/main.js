@@ -42,7 +42,8 @@ const config = {
     },
     "responsive": {
         "enabled": true
-    }
+    },
+    "tapToActivate": true
 }
 
 // This code loads the IFrame Player API code asynchronously.

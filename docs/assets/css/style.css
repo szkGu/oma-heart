@@ -82,6 +82,7 @@ select {
     }
     #chartdiv {
         width: 95%;
+        height: 30vh;
     }
     .container {
         width: 100%;
