@@ -2,19 +2,23 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=0.5">
-  <title>oma-heart</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Omayu Heartbeat Graph</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <div class="body">
     <div class="container">
-      <div class="bg-title"><h1>心拍数グラフ</h1></div>
-      <div id="ytplayer"></div>
+      <div class="bg-title"><h1>Omayu Heartbeat Graph</h1></div>
+      <div class="yt-wrap-outer">
+        <div class="yt-wrap">
+          <div id="ytplayer"></div>
+        </div>
+      </div>
+      <select id="video-select" onchange="selectVideo(this.options[this.selectedIndex].value);"></select>
       <div id="chartdiv"></div>
       <hr>
       <ul>
-        <li>このツールは非公式です。</li>
         <li>バグ報告は <a href="https://twitter.com/szkGu" target="_blank" rel="noopener noreferrer">@szkGu</a> まで。</li>
       </ul>
     </div>
