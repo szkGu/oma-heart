@@ -135,6 +135,7 @@ window.onYouTubeIframeAPIReady = () => {
     player = new YT.Player("ytplayer", {
         height: "450",
         width: "800",
+        playerVars: {"playsinline": 1},
         events: {
             "onReady": onPlayerReady,
             "onStateChange": onPlayerStateChange
