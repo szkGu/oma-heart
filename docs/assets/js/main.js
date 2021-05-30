@@ -60,6 +60,8 @@ let chartData;
 am4core.useTheme(am4themes_animated);
 // Themes end
 
+am4core.options.disableHoverOnTransform = "touch";
+
 const chart = am4core.createFromConfig(config, "chartdiv", am4charts.XYChart);
 // チャートをクリックした時の挙動
 chart.events.on("hit", () => {
