@@ -1,0 +1,28 @@
+body {
+    margin: 0px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.bg-title {
+    background-color : white;
+}
+
+.body {
+    background-color : whitesmoke;
+}
+
+.container {
+    background-color : white;
+    box-shadow: 0 0 8px lightgray;
+    width: 720px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+#chartdiv {
+    width: 100%;
+    height: 500px;
+}
