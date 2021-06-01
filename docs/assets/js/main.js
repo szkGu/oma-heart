@@ -64,16 +64,27 @@ am4core.useTheme(am4themes_animated);
 am4core.options.disableHoverOnTransform = "touch";
 
 const chart = am4core.createFromConfig(config, "chartdiv", am4charts.XYChart);
-// チャートをクリックした時の挙動
-chart.events.on("hit", () => {
-    const targetSec = chart.series.values[0].tooltipDataItem.valueX;
-    const state = player.getPlayerState()
-    if (state == 5) {
-        player.loadVideoById({videoId: player.getVideoData().video_id, startSeconds: targetSec});
-    } else {
-        player.seekTo(targetSec);
-        setRangeEnd(targetSec);
-        player.playVideo();
+
+// ズームアウトボタンをホバーしているかどうかの判定
+let onZoomOutButton = false;
+chart.zoomOutButton.events.on("over", (ev) => {
+    onZoomOutButton = true;
+});
+chart.zoomOutButton.events.on("out", (ev) => {
+    onZoomOutButton = false;
+});
+// チャートをクリックした時に動画をツールチップの位置までシーク
+chart.events.on("hit", (ev) => {
+    if (!onZoomOutButton) {
+        const targetSec = chart.series.values[0].tooltipDataItem.valueX;
+        const state = player.getPlayerState()
+        if (state == 5) {
+            player.loadVideoById({videoId: player.getVideoData().video_id, startSeconds: targetSec});
+        } else {
+            player.seekTo(targetSec);
+            setRangeEnd(targetSec);
+            player.playVideo();
+        }
     }
 });
 
@@ -144,6 +155,7 @@ window.onYouTubeIframeAPIReady = () => {
         },
         playerVars: {
             playsinline: 1,
+            rel: 0,
         }
     });
 };
